@@ -1,15 +1,18 @@
 'use strict'
 
- const header = document.getElementById('header');
+const ul = document.querySelector('ul');
+const header = document.querySelector('h1');
+const paragraph = document.querySelector('p');
 
- header.innerText = 'ewfwefew';
- console.dir(header);
 
- const arrLi = document.getElementsByTagName('li');
+header.style.color = 'violet';
+header.style.fontSize = '20px';
 
- console.log(arrLi);
+ul.style.display = 'flex';
+ul.style.justifyContent = 'space-around'
+ul.style.listStyle = 'none';
+ul.style.backgroundColor = 'pink';
 
- console.dir(arrLi[0]);
+paragraph.style.color = 'blue';
 
- const cnArr = document.getElementsByClassName('cn');
- console.log(cnArr)
+
