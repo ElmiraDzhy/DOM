@@ -8,11 +8,8 @@ const form = document.querySelector('form');
 
 
 div.addEventListener('click', (e)=> {
-
     console.log(e.target);
-    if(e.target === e.currentTarget){
-        e.target.children[0].style.color = 'red';
-    }
+    e.stopPropagation();   
 }, true);
 
 btn.addEventListener('click', (e)=> console.log(e.target));
