@@ -1,18 +1,18 @@
 'use strict'
 
-const ul = document.querySelector('ul');
-const header = document.querySelector('h1');
-const paragraph = document.querySelector('p');
+//Events
 
+const btn = document.querySelectorAll('.btn');
 
-header.style.color = 'violet';
-header.style.fontSize = '20px';
+function clickHandler(){
+    
+    this.style.backgroundColor = 'red';
 
-ul.style.display = 'flex';
-ul.style.justifyContent = 'space-around'
-ul.style.listStyle = 'none';
-ul.style.backgroundColor = 'pink';
+    btn.forEach((button)=> button.removeEventListener('click', clickHandler));
 
-paragraph.style.color = 'blue';
+}
+
+btn.forEach((button) => button.addEventListener('click', clickHandler));
+
 
 
