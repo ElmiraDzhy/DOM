@@ -2,21 +2,38 @@
 
 //Events
 
-const div = document.querySelector('div');
+const parent = document.querySelector('section');
+const div = document.querySelector('.score');
 const btn = document.querySelector('button');
-const form = document.querySelector('form');
 
 
-div.addEventListener('click', (e)=> {
-    console.log(e.target);
-    e.stopPropagation();   
-}, true);
-
-btn.addEventListener('click', (e)=> console.log(e.target));
+let counter = 0;
 
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-    console.log(e);
+function increment(){
+    counter++;
+    updateView();
 
+}
+function decrement(){
+    counter--;
+    updateView();
+
+}
+
+function updateView(){
+    div.textContent = counter;
+
+}
+
+
+
+
+
+parent.addEventListener('click', (e)=>{
+    if(e.currentTarget === e.target){
+        increment();
+    }else{
+        decrement();
+    }
 })
