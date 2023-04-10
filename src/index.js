@@ -2,35 +2,37 @@
 
 //Unit 49
 
-const gamefield = document.querySelector('.gamefield');
+document.addEventListener('keydown', (e) => {
+    const SIZE = 10;
+    const box =  e.currentTarget.body.children[0];
 
-const box = document.querySelector('.box');
+    const y = box.offsetTop;
+    const x =  box.offsetLeft;
 
-const score = document.querySelector('.score');
-
-let counter = 0;
+    console.log(e.code);
 
 
-gamefield.addEventListener('click', (e) => {
-    if(e.target !== e.currentTarget){
-        counter++;
-        updateView();
+    switch(e.code){
+
+        case 'ArrowLeft': 
+            box.style.left = `${x - SIZE}px`;
+            break;
+
+        case 'ArrowRight': 
+            box.style.left = `${x + SIZE}px`;
+            break;
+
+        case 'ArrowUp':
+            box.style.top = `${y - SIZE}px`;
+            break;
+
+        case 'ArrowDown':
+            box.style.top = `${y + SIZE}px`;
+            break;
     }
-    
-    const X = getRandom(0, e.currentTarget.offsetWidth - (box.offsetWidth / 2));
-    const Y = getRandom(0, e.currentTarget.offsetHeight - (box.offsetHeight / 2));
 
-    box.style.top = `${Y}px`;
-    box.style.bottom = `${Y}px`;
 
-    box.style.left = `${X}px`;
-    box.style.right = `${X}px`;
-});
 
-function getRandom(min, max){
-    return Math.random() * (max - min) + min;
-}
+} );
 
-function updateView(){
-    score.textContent = counter;
-}
+
