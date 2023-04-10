@@ -1,10 +1,24 @@
 'use strict'
 
-const btn = document.querySelector('.btn');
-const menu = document.querySelector('.menu');
+//Unit 49
 
-const closeBtn = document.querySelector('.close-btn');
+const gamefield = document.querySelector('.gamefield');
 
-btn.addEventListener('click', ()=> menu.style.left = '0px');
+const box = document.querySelector('.box')
 
-closeBtn.addEventListener('click', ()=> menu.style.left = '-300px')
+let coordinateY  = 0;
+let coordinateX  = 0;
+
+
+gamefield.addEventListener('click', (e) => {
+    if(e.target === e.currentTarget){
+        coordinateY = e.clientY - box.offsetWidth/2;
+        coordinateX = e.clientX - box.offsetHeight/2;
+    
+        box.style.right = `${coordinateX}px`;
+        box.style.left = `${coordinateX}px`;
+        box.style.top = `${coordinateY}px`;
+        box.style.bottom = `${coordinateY}px`;
+
+    }
+});
