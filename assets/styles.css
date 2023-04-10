@@ -25,6 +25,10 @@ section{
 
     transition: all;
     transition-duration: 1s;
-    transition-timing-function:cubic-bezier(0.39, 0.575, 0.565, 1);
+    transition-timing-function: ease-in-out;
 
+}
+
+.score{
+    font-size: 20px;
 }

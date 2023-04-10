@@ -4,21 +4,33 @@
 
 const gamefield = document.querySelector('.gamefield');
 
-const box = document.querySelector('.box')
+const box = document.querySelector('.box');
 
-let coordinateY  = 0;
-let coordinateX  = 0;
+const score = document.querySelector('.score');
+
+let counter = 0;
 
 
 gamefield.addEventListener('click', (e) => {
-    if(e.target === e.currentTarget){
-        coordinateY = e.clientY - box.offsetWidth/2;
-        coordinateX = e.clientX - box.offsetHeight/2;
-    
-        box.style.right = `${coordinateX}px`;
-        box.style.left = `${coordinateX}px`;
-        box.style.top = `${coordinateY}px`;
-        box.style.bottom = `${coordinateY}px`;
-
+    if(e.target !== e.currentTarget){
+        counter++;
+        updateView();
     }
+    
+    const X = getRandom(0, e.currentTarget.offsetWidth - (box.offsetWidth / 2));
+    const Y = getRandom(0, e.currentTarget.offsetHeight - (box.offsetHeight / 2));
+
+    box.style.top = `${Y}px`;
+    box.style.bottom = `${Y}px`;
+
+    box.style.left = `${X}px`;
+    box.style.right = `${X}px`;
 });
+
+function getRandom(min, max){
+    return Math.random() * (max - min) + min;
+}
+
+function updateView(){
+    score.textContent = counter;
+}
