@@ -1,12 +1,6 @@
 'use strict'
 
 //Unit 49
-const btnNext = document.querySelector('.btnNext');
-const btnPrev = document.querySelector('.btnPrev');
-
-const img = document.querySelector('img');
-
-const attr = document.createAttribute('src');
 
 const arr = ['https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720.jpg', 
             'https://img.freepik.com/free-photo/wide-angle-shot-single-tree-growing-clouded-sky-during-sunset-surrounded-by-grass_181624-22807.jpg', 
@@ -17,23 +11,32 @@ const arr = ['https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_960_720
             'https://images.unsplash.com/photo-1531804055935-76f44d7c3621?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cGhvdG98ZW58MHx8MHx8&w=1000&q=80',
             'https://images.unsplash.com/39/F9g2FiPUSyC7IybhyI2p_09.jpg?ixlib=rb-4.0.3&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max'];
 
-let index = 0;
-updateImg();
 
-btnNext.addEventListener('click', () => {
-     index =  (index === arr.length-1) ?  0 : index + 1;
-     updateImg();
- });
+const img = document.querySelector('.image');
+const attr = document.createAttribute('src');
+img.setAttributeNode(attr);
 
-btnPrev.addEventListener('click', () => {
-    index = (index === 0) ? arr.length-1 : index - 1;
-    updateImg();
-   
-});
 
-function updateImg(){
-    attr.value = arr[index];
-    img.setAttributeNode(attr);
+const [btnPrev, btnNext] = document.querySelectorAll('.btns > .btn');
+
+
+const slider = new Slider(arr);
+
+
+function updateView(){
+    attr.value = slider.currentSlide;
 }
 
-             
+updateView();
+
+
+const createBtnHandler = (direction = 'next') => {
+    return function(){
+        slider.currentIndex = slider[direction];
+        updateView();
+    }
+}
+
+btnPrev.addEventListener('click', createBtnHandler('prev'));
+
+btnNext.addEventListener('click', createBtnHandler('next'));
