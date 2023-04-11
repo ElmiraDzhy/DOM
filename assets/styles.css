@@ -18,12 +18,26 @@ form *{
     margin: 10px 5px;
 }
 
-.error{
+.pass-validation{
     display: none;
-    color: red;
     background-color: bisque;
 }
 
-.show-error{
+.show-weak{
     display: block;
+    color: red;
+
+}
+
+.show-middle{
+    color: rgb(255, 153, 0);
+    display: block;
+
+
+}
+
+.show-good{
+    color: green;
+    display: block;
+
 }

@@ -2,23 +2,34 @@
 
 //Unit 49
 
-const form = document.querySelector('form');
-const errorContainer = document.querySelector('.error')
+const input = document.querySelector('[name="passInput"]');
+const passValidation = document.querySelector('.pass-validation');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    errorContainer.textContent = '';
-    errorContainer.classList.remove('swoh-error');
-    const {emailInput, passInput} = e.target;
+input.addEventListener('change', ({target: {value: {length}}}) => {
 
-    const email = emailInput.value;
-    const pass = passInput.value;
-    if(!email.includes('@')){
-        errorContainer.textContent = 'Email is not valid';
-        errorContainer.classList.add('show-error');
-    } else if(pass.toLowerCase().includes('qwerty') || pass.length <= 5){
-        errorContainer.textContent = 'Pass is not valid';
-        errorContainer.classList.add('show-error');
+
+    clearClasses();
+
+    if(length < 5){
+        showMsg('Weak', 'show-weak');
+    } 
+
+    if(length >= 5 && input.value.length <= 7){
+        showMsg('Middle', 'show-middle');
+    }
+    
+    if(length >= 8) {
+        showMsg('Strong', 'show-good');
     }
 });
 
+function showMsg(type, cls){
+    passValidation.textContent = type;
+    passValidation.classList.add(cls);
+}
+
+function clearClasses(){
+    passValidation.classList.remove('show-weak');
+    passValidation.classList.remove('show-middle');
+    passValidation.classList.remove('show-good');
+}
