@@ -6,38 +6,17 @@
     box-sizing: border-box;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    margin: 200px auto;
-    width: 300px;
-    border: 1px solid black;
+.square{
+    width: 200px;
+    height: 200px;
+    background-color: rgb(202, 89, 89);
+    display: inline-block;
 }
 
-form *{
-    margin: 10px 5px;
-}
-
-.pass-validation{
-    display: none;
-    background-color: bisque;
-}
-
-.show-weak{
-    display: block;
-    color: red;
-
-}
-
-.show-middle{
-    color: rgb(255, 153, 0);
-    display: block;
-
-
-}
-
-.show-good{
-    color: green;
-    display: block;
-
+.circle{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(202, 89, 89);
+    display: inline-block;
+    border-radius: 50%;
 }
