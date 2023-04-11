@@ -2,24 +2,21 @@
 
 //Unit 49
 
-const btn = document.querySelector('button');
-
-btn.addEventListener('click', createSquare);
-
-function createSquare(){
-
-    const div = document.createElement('div');
-    div.classList.add('circle');
-    const parentWidth = document.body.offsetWidth;
-    const parentHeight = document.body.offsetHeight;
-
-    div.style.top = `${getRandomCoordinate(0, parentHeight)}px`;
-    div.style.left = `${getRandomCoordinate(0, parentWidth)}px`;
-
-    document.body.append(div);
+function loadUserCards(){
+    data.forEach((user) => {
+        const userFullName = document.createElement('h3');
+        const userPhoto = document.createElement('img');
+        userFullName.append(`${user.firstName} ${user.lastName}`);
+        userPhoto.setAttribute('src', user.avatar);
+        userPhoto.classList.add('userPhoto');
+        createUserCards(userFullName, userPhoto);
+    })
 }
 
-
-function getRandomCoordinate(min, max){
-    return Math.random() * (max - min) + min;
+function createUserCards(userFullName, userPhoto) {
+    const userCard = document.createElement('section');
+    userCard.append( userPhoto, userFullName);
+    document.body.append(userCard);
 }
+
+document.body.addEventListener('onload', loadUserCards());
