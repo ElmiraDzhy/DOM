@@ -21,24 +21,19 @@
 		<title>Document</title>
 	</head>
 	<body>
-		<article>
-			<button
-				data-address="localhost:3000"
-				data-name="buttonSignIn"
-				>signIn</button
-			>
-			<!--local host 3000-->
-			<button>signUp</button>
-			<!--local host 3500-->
-		</article>
-
-		<div>
-			<button data-color="red">red</button>
-			<button data-color="blue">blue</button>
-			<button data-color="pink">pink</button>
-			<button data-color="yellow">yellow</button>
-			<button data-color="green">green</button>
-		</div>
+		<form action="">
+			<h1>Sign In</h1>
+			<input
+				name="emailInput"
+				type="text"
+				placeholder="your email" />
+			<input
+				name="passInput"
+				type="password"
+				placeholder="your pass" />
+			<button>Submit</button>
+			<p class="error"></p>
+		</form>
 	</body>
 </html>
 

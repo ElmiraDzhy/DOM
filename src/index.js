@@ -2,22 +2,19 @@
 
 //Unit 49
 
-const [signIn, signUp] = document.querySelectorAll('article > button');
+const form = document.querySelector('form');
+const errorContainer = document.querySelector('.error')
 
-console.dir(signIn);
-console.dir(signIn.dataset.address);
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    
+    const {emailInput, passInput} = e.target;
 
-signIn.dataset.newvalue = 'test';
-
-
-//task #1
-
-const btns = document.querySelectorAll('div > button');
-
-
-btns.forEach((button) => {
-    button.addEventListener('click', (e)=>{
-        button.parentElement.style.backgroundColor = button.dataset.color;
-    })
+    const email = emailInput.value;
+    const pass = passInput.value;
+    if(!email.includes('@')){
+        errorContainer.textContent = 'Email is not valid';
+        errorContainer.classList.add('show-error');
+    }
 });
 
