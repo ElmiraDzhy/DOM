@@ -20,3 +20,35 @@ function createUserCards(userFullName, userPhoto) {
 }
 
 document.body.addEventListener('onload', loadUserCards());
+
+
+const toDoList = document.querySelector('.toDoList');
+const btn = document.querySelector('.btn');
+const input = document.querySelector('input');
+const form = document.querySelector('form')
+
+
+btn.addEventListener('click', () => {
+    
+    if(input.value !== ''){
+        const li = document.createElement('li');
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'delete me';
+    
+        deleteBtn.addEventListener('click', () => {
+            li.remove();
+            deleteBtn.remove();
+        })
+    
+        li.append(input.value);
+        li.append(deleteBtn);
+        toDoList.append(li);
+        input.value = '';
+    }
+
+ 
+})
+
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+})
